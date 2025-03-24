@@ -53,7 +53,7 @@ export const useGameStore = create<GameState>((set, get) => {
 
   const initSocket = () => {
     if (!socket) {
-      socket = io("http://localhost:3001");
+      socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:3001");
 
       socket.on("gameStart", ({ players }) => {
         console.log("Game started with players:", players);
